@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Revealing Module Pattern</title>
+    <script>
+        window.onload = function(){
+
+            var calculator = function(eq){
+                console.log(eq);
+                // private variables
+                // private functions
+                var eqCtl = document.getElementById(eq),
+                        doAdd = function(x,y){
+                            var val = x + y;
+                            eqCtl.innerHTML = val;
+                        };
+                return {
+                    // public members
+                    // externally call add, forward the call to doAdd
+                    add: doAdd
+                };
+            }('output'); // self calling, passes in eqCtl
+            // because its self-calling, you dont need "new" so "c" is lower
+            calculator.add(2,2);
+        };
+
+    </script>
+</head>
+<body>
+<div id ="output"></div>
+</body>
+</html>

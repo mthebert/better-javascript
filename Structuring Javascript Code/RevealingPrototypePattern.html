@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Revealing Prototype Pattern Demo</title>
+    <script>
+        window.onload = function(){
+            // you can extend this pattern easily...
+            Calculator.prototype.multiply = function(x,y){
+                console.log("MULTIPLY!!!  " + (x*y));
+            };
+
+            var calc = new Calculator('output');
+            calc.add(2,2);
+            calc.subtract(9,6);
+            calc.multiply(9,9);
+
+        };
+        // this should go in a different file, calculator.js
+        // this is our constructor, gets called when we new up
+        var Calculator = function(eq){
+            // variables specific to each object created, not a singleton
+            // so any state-specific stuff goes here, which is also why we use "this" here
+            this.eqCtl = document.getElementById(eq);
+        };
+
+        Calculator.prototype = function(){
+            // private methods - these are shared
+            var add = function(x,y){
+                this.eqCtl.innerHTML = x + y;
+            },
+            subtract = function(x,y){
+                console.log(x-y);
+            };
+            // public aliases
+            return {
+                // alias for the external call
+                add: add,
+                subtract: subtract
+            };
+        }();
+
+    </script>
+</head>
+<body>
+<div id="output"></div>
+</body>
+</html>

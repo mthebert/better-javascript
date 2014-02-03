@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Prototype Patterns</title>
+    <script>
+        window.onload = function(){
+            var c = new Calculator('eq');
+            c.add(2,2);
+        }
+        var Calculator = function(eq){
+            // variables defined up in the constructor area they are unique to the instance
+            this.eqCtl = document.getElementById(eq);
+        };
+        Calculator.prototype = {
+            // functions down in the prototype area, shared by all instances of calculator
+            add: function(x, y){
+                var val = x+y;
+                this.eqCtl.innerHTML = val;
+            }
+        };
+    </script>
+</head>
+<body>
+<div id="eq">
+
+
+</div>
+</body>
+</html>

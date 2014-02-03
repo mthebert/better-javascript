@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+	<title>Using Functions</title>
+	<link href="Styles/styles.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript">
+	window.onload = function(){
+		var output = document.getElementById("output");
+		output.innerHTML = myNonClosure();
+		output.innerHTML += "<br />" + myNonClosure();
+	}
+	function myNonClosure(){
+		var date = new Date();
+		return date.getMilliseconds;
+	}
+    function myClosure(){
+        var date = new Date();
+        // nested function
+        return function(){
+            return date.getMilliseconds();
+        };
+	</script>
+</head>
+<body>
+	<div>
+		<h1>A simple demo of using a closure</h1>
+		Note that the date variable milliseconds shown is the same
+		across calls to the myClosure() function in the code.  This is due to a 
+		"closure" being created that keeps the variable alive across function calls.
+		<br />
+		<br />
+		<div id ="output"></div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Module Pattern Demo</title>
+    <script>
+        window.onload = function(){
+            var c = new Calculator('eq');
+            c.add(2,2);
+        }
+        var Calculator = function(eq){
+            // private member
+            // notice different than the prototype that used this.eqCtl
+            var eqCtl = document.getElementById(eq);
+            // return object literal has our public members
+            return {
+                add: function(x, y){
+                    var val = x + y;
+                    eqCtl.innerHTML = val;
+                }
+            };
+        };
+    </script>
+</head>
+<body>
+<div id="eq">
+
+
+</div>
+</body>
+</html>
